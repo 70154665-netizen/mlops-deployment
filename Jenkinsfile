@@ -6,7 +6,7 @@ pipeline {
     }
 
     stages {
-    
+        
         stage('Dev Pipeline') {
             when {
                 branch 'dev'
@@ -15,13 +15,13 @@ pipeline {
                 stage('Data Ingest & Train') {
                     steps {
                         echo 'Data Ingest and Training Model...'
-                        sh 'python train.py'
+                        sh 'python3 train.py'
                     }
                 }
                 stage('Model Deploy & Test (Dev)') {
                     steps {
                         echo 'Deploying and Testing Model on Dev...'
-                        sh 'python -c "print(\'Model Test Passed\')"'
+                        sh 'python3 -c "print(\'Model Test Passed\')"'
                     }
                 }
             }
@@ -61,7 +61,7 @@ pipeline {
             }
         }
 
-  
+        
         stage('Prod Pipeline') {
             when {
                 buildingTag()
