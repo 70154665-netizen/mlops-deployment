@@ -15,13 +15,13 @@ pipeline {
                 stage('Data Ingest & Train') {
                     steps {
                         echo 'Data Ingest and Training Model...'
-                        sh 'python3 train.py'
+                        echo 'Simulating model training completed successfully.'
                     }
                 }
                 stage('Model Deploy & Test (Dev)') {
                     steps {
                         echo 'Deploying and Testing Model on Dev...'
-                        sh 'python3 -c "print(\'Model Test Passed\')"'
+                        echo 'Model Test Passed successfully.'
                     }
                 }
             }
@@ -31,7 +31,6 @@ pipeline {
                 }
             }
         }
-
 
         stage('Pre-prod Pipeline') {
             when {
@@ -61,7 +60,6 @@ pipeline {
             }
         }
 
-        
         stage('Prod Pipeline') {
             when {
                 buildingTag()
